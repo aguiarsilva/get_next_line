@@ -6,13 +6,14 @@
 /*   By: baguiar- <baguiar-@student.42wolfsburg.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:37:42 by baguiar-          #+#    #+#             */
-/*   Updated: 2023/12/29 23:15:32 by baguiar-         ###   ########.fr       */
+/*   Updated: 2023/12/29 23:33:16 by baguiar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
+#include <cstddef>
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 10
 #endif
@@ -27,5 +28,10 @@ typedef struct s_list
 }     t_list;
 
 char  *get_next_line(int fd);
+char  *ft_strchr(const char *s, int c);
+char  *ft_strdup(char *s1);
+size_t  ft_strlen(const char *str);
+char  *ft_substr(char const *s, unsigned int start, size_t len);
+char  *ft_strjoin(char const *s1, char const *s2);
 
 #endif
