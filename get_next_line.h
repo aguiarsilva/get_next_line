@@ -6,26 +6,17 @@
 /*   By: baguiar- <baguiar-@student.42wolfsburg.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:37:42 by baguiar-          #+#    #+#             */
-/*   Updated: 2023/12/29 23:33:16 by baguiar-         ###   ########.fr       */
+/*   Updated: 2024/01/02 23:27:50 by baguiar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-
-#include <cstddef>
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 10
 #endif
-
 # include <stdlib.h>
 # include <unistd.h>
-
-typedef struct s_list 
-{
-  char          *s_buff;
-  struct s_list *next;
-}     t_list;
 
 char  *get_next_line(int fd);
 char  *ft_strchr(const char *s, int c);
