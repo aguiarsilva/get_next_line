@@ -6,7 +6,7 @@
 /*   By: baguiar- <baguiar-@student.42wolfsburg.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:38:09 by baguiar-          #+#    #+#             */
-/*   Updated: 2024/01/03 12:31:09 by baguiar-         ###   ########.fr       */
+/*   Updated: 2024/01/04 14:38:21 by baguiar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,26 @@ static char	*put_line(char *line_buf)
 
 char  *get_next_line(int fd)
 {
+  static char  *lchar;
+  char         *buf;
+  char         *line;
 
+  buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+  if(fd < 0 || BUFFER_SIZE <= 0 || (read(fd, 0, 0) < 0))
+  {
+    free(lchar);
+    free(buf);
+    lchar = NULL;
+    buf = NULL;
+    return (NULL);
+  }
+  if(!buf)
+    return (NULL);
+  line = fill_buffer(fd, lchar, buf);
+  free(buf);
+  buf = NULL;
+  if (!line)
+    return (NULL);
+  lchar = put_line(line);
+  return (line);
 }
