@@ -6,7 +6,7 @@
 /*   By: baguiar- <baguiar-@student.42wolfsburg.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:38:22 by baguiar-          #+#    #+#             */
-/*   Updated: 2023/12/29 23:29:25 by baguiar-         ###   ########.fr       */
+/*   Updated: 2024/01/04 23:54:56 by baguiar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,20 @@
 
 char  *ft_strchr(const char *s, int c)
 {
-  while ((char)c != *s)
+  unsigned int  i;
+  char          c1;
+
+  c1 = (char) c;
+  i = 0;
+  while (s[i])
   {
-    if (!*s)
-      return (NULL);
-    s++;
+    if (s[i] == c1)
+      return ((char *) &s[i]);
+    i++;
   }
-  return ((char *)s);
+  if (s[i] == c1)
+    return ((char *) &s[i]);
+  return (NULL);
 }
 
 char  *ft_strdup(char *s1)
@@ -71,6 +78,7 @@ char  *ft_substr(char const *s, unsigned int start, size_t len)
     s2[i] = s[start + i];
     i++;
   }
+  s2[i] = '\0';
   return (s2);
 }
 
@@ -86,15 +94,17 @@ char  *ft_strjoin(char const *s1, char const *s2)
   lens2 = ft_strlen(s2);
   i = 0;
   j = 0;
-  str = (char *)malloc((lens1 + lens2 +1) * sizeof(char));
+  str = (char *)malloc((lens1 + lens2 + 1) * sizeof(char));
   if (!str)
     return (NULL);
   while (s1[i])
-    str[j++] = s1[i++];
-  i = 0;
-  while (s2[i])
-    str[j++] = s2[i++];
-  str[j] = '\0';
+  {
+    str[i] = s1[i];
+    i++;
+  }
+  while (s2[j])
+    str[i++] = s2[j++];
+  str[i] = '\0';
   return (str);
 }
 

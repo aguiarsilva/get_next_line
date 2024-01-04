@@ -6,13 +6,13 @@
 /*   By: baguiar- <baguiar-@student.42wolfsburg.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:38:09 by baguiar-          #+#    #+#             */
-/*   Updated: 2024/01/04 14:42:59 by baguiar-         ###   ########.fr       */
+/*   Updated: 2024/01/04 23:29:25 by baguiar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char *fill_buffer(int fd, char *lchar, char *buf)
+static char *fill_line(int fd, char *lchar, char *buf)
 {
   ssize_t byte;
   char    *temp;
@@ -28,7 +28,7 @@ static char *fill_buffer(int fd, char *lchar, char *buf)
     }
     else if (byte == 0)
         break;
-    buf[byte] = 0;
+    buf[byte] = '\0';
     if (!lchar)
       lchar = ft_strdup("");
     temp = lchar;
@@ -51,7 +51,7 @@ static char	*put_line(char *line_buf)
   {
     i++;
   }
-  if (line_buf[i] == '\0' && line_buf[i] == '\n')
+  if (line_buf[i] == 0 || line_buf[1] == 0)
     return (NULL);
   stack = ft_substr(line_buf, i + 1, ft_strlen(line_buf) - i);
   if (*stack == 0)
@@ -70,17 +70,17 @@ char  *get_next_line(int fd)
   char         *line;
 
   buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-  if(fd < 0 || BUFFER_SIZE <= 0 || (read(fd, 0, 0) < 0))
+  if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
   {
-    free(lchar);
     free(buf);
-    lchar = NULL;
+    free(lchar);
     buf = NULL;
+    lchar = NULL;
     return (NULL);
   }
-  if(!buf)
+  if (!buf)
     return (NULL);
-  line = fill_buffer(fd, lchar, buf);
+  line = fill_line(fd, lchar, buf);
   free(buf);
   buf = NULL;
   if (!line)
