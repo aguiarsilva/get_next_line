@@ -6,7 +6,7 @@
 /*   By: baguiar- <baguiar-@student.42wolfsburg.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:38:22 by baguiar-          #+#    #+#             */
-/*   Updated: 2024/01/04 23:54:56 by baguiar-         ###   ########.fr       */
+/*   Updated: 2024/01/05 00:01:52 by baguiar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,9 @@ char  *ft_substr(char const *s, unsigned int start, size_t len)
   i = 0;
   while (i < len)
   {
-    s2[i] = s[start + i];
+    s2[i] = s[start];
     i++;
+    start++;
   }
   s2[i] = '\0';
   return (s2);

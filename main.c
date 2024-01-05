@@ -10,7 +10,7 @@ int	main(void)
 	int		count;
 
 	count = 0;
-	fd = open("lines_around_10.txt", O_RDONLY);
+	fd = open("variable_nls.txt", O_RDONLY);
 	if (fd == -1)
 	{
 		printf("Error opening File!");
