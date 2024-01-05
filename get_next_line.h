@@ -6,15 +6,17 @@
 /*   By: baguiar- <baguiar-@student.42wolfsburg.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:37:42 by baguiar-          #+#    #+#             */
-/*   Updated: 2024/01/04 22:59:27 by baguiar-         ###   ########.fr       */
+/*   Updated: 2024/01/05 13:42:28 by baguiar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 10
 #endif
+
 # include <stdlib.h>
 # include <unistd.h>
 

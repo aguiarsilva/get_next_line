@@ -6,13 +6,42 @@
 /*   By: baguiar- <baguiar-@student.42wolfsburg.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:38:09 by baguiar-          #+#    #+#             */
-/*   Updated: 2024/01/05 13:32:18 by baguiar-         ###   ########.fr       */
+/*   Updated: 2024/01/05 13:46:51 by baguiar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char *fill_line(int fd, char *lchar, char *buf)
+static char *fill_line(int fd, char *lchar, char *buf);
+static char	*put_line(char *line_buf);
+
+char  *get_next_line(int fd)
+{
+  static char  *lchar;
+  char         *buf;
+  char         *line;
+
+  buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+  if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+  {
+    free(buf);
+    free(lchar);
+    buf = NULL;
+    lchar = NULL;
+    return (NULL);
+  }
+  if (!buf)
+    return (NULL);
+  line = fill_line(fd, lchar, buf);
+  free(buf);
+  buf = NULL;
+  if (!line)
+    return (NULL);
+  lchar = put_line(line);
+  return (line);
+}
+
+char *fill_line(int fd, char *lchar, char *buf)
 {
   ssize_t byte;
   char    *temp;
@@ -41,7 +70,7 @@ static char *fill_line(int fd, char *lchar, char *buf)
   return (lchar);
 }
 
-static char	*put_line(char *line_buf)
+char	*put_line(char *line_buf)
 {
   char    *stack;
   ssize_t i;
@@ -63,28 +92,3 @@ static char	*put_line(char *line_buf)
   return (stack);
 }
 
-char  *get_next_line(int fd)
-{
-  static char  *lchar;
-  char         *buf;
-  char         *line;
-
-  buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-  if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
-  {
-    free(buf);
-    free(lchar);
-    buf = NULL;
-    lchar = NULL;
-    return (NULL);
-  }
-  if (!buf)
-    return (NULL);
-  line = fill_line(fd, lchar, buf);
-  free(buf);
-  buf = NULL;
-  if (!line)
-    return (NULL);
-  lchar = put_line(line);
-  return (line);
-}
