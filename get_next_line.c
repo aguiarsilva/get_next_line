@@ -6,14 +6,14 @@
 /*   By: baguiar- <baguiar-@student.42wolfsburg.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:38:09 by baguiar-          #+#    #+#             */
-/*   Updated: 2024/01/05 13:46:51 by baguiar-         ###   ########.fr       */
+/*   Updated: 2024/01/05 14:12:59 by baguiar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char *fill_line(int fd, char *lchar, char *buf);
-static char	*put_line(char *line_buf);
+char *fill_line(int fd, char *lchar, char *buf);
+char	*put_line(char *line_buf);
 
 char  *get_next_line(int fd)
 {
