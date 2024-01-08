@@ -6,7 +6,7 @@
 /*   By: baguiar- <baguiar-@student.42wolfsburg.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:37:42 by baguiar-          #+#    #+#             */
-/*   Updated: 2024/01/05 13:42:28 by baguiar-         ###   ########.fr       */
+/*   Updated: 2024/01/08 14:16:20 by baguiar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@
 # include <unistd.h>
 
 char  *get_next_line(int fd);
-char  *ft_strchr(const char *s, int c);
 char  *ft_strdup(char *s1);
 size_t  ft_strlen(const char *str);
 char  *ft_substr(char const *s, unsigned int start, size_t len);
 char  *ft_strjoin(char const *s1, char const *s2);
-
+char  *ft_strchr(const char *s, int c);
 #endif

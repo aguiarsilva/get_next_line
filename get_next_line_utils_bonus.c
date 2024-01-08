@@ -12,24 +12,6 @@
 
 #include "get_next_line_bonus.h"
 
-char  *ft_strchr(const char *s, int c)
-{
-  unsigned int  i;
-  char          c1;
-
-  c1 = (char) c;
-  i = 0;
-  while (s[i])
-  {
-    if (s[i] == c1)
-      return ((char *) &s[i]);
-    i++;
-  }
-  if (s[i] == c1)
-    return ((char *) &s[i]);
-  return (NULL);
-}
-
 char  *ft_strdup(char *s1)
 {
   char    *s2;
@@ -104,7 +86,28 @@ char  *ft_strjoin(char const *s1, char const *s2)
     i++;
   }
   while (s2[j])
-    str[i++] = s2[j++];
-  str[i] = '\0';
+  {
+    str[i + j] = s2[j];
+    j++;
+  }
+  str[i + j] = '\0';
   return (str);
+}
+
+char  *ft_strchr(const char *s, int c)
+{
+  unsigned int  i;
+  char          c1;
+
+  c1 = (char) c;
+  i = 0;
+  while (s[i])
+  {
+    if (s[i] == c1)
+      return ((char *) &s[i]);
+    i++;
+  }
+  if (s[i] == c1)
+    return ((char *) &s[i]);
+  return (NULL);
 }

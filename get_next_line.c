@@ -91,4 +91,3 @@ char	*put_line(char *line_buf)
   line_buf[i + 1] = 0;
   return (stack);
 }
-
